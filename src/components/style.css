@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+}
+
+.parentContainer{
+    font-family: sans-serif;
+    background-color: #9EAADD;
+    display: flex;
+    justify-content: space-around;
+    padding: 25px 400px;
+    margin: 0;
+    color: white;
+}
