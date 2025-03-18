@@ -16,9 +16,11 @@ export default function Home() {
     });
     
     const [errors, setErrors] = useState({
+        nama: false,
+        umur: false,
+        jeniskelamin: false,
         tinggibadan: false,
         beratbadan: false,
-        user: false
     });
 
     const [progress, setProgress] = useState(0);
@@ -62,6 +64,27 @@ export default function Home() {
         }
         setBiodata({ ...biodata, [name]: e.target.value });
     };
+
+    const RadioQuestion = ({ question, options, name, onChange }) => (
+        <div className="my-4">
+            <h2 className="font-medium">{question}</h2>
+            <div className="flex space-x-4 mt-2">
+                {options.map((option) => (
+                    <label key={option} className="cursor-pointer">
+                        <input
+                            type="radio"
+                            name={name}
+                            value={option}
+                            className="mr-2"
+                            onChange={onChange}
+                        />
+                        {option}
+                    </label>
+                ))}
+            </div>
+        </div>
+    );
+    
 
     return (
         <div className="items-center justify-center bg-blue-200 h-screen">
@@ -218,14 +241,84 @@ export default function Home() {
                 )}
 
                 {step === 3 && (
-                    <div>asdsad
+                    <div className="h-screen w-screen mx-32 mt-32 bg-red-100 border-2 border-black">
+                        <div className="flex items-center m-12">
+                            <div className="flex justify-center items-center w-12 h-12 rounded-full bg-black text-white text-xl font-bold">
+                                1
+                            </div>
+                            <h1 className="text-2xl font-medium ml-6">Physical Activity Level:</h1>
+                        </div>
+                        
+                        <RadioQuestion
+                            question="Physical Activity Level"
+                            name="activityLevel"
+                            options={['Moderate', 'Low', 'High']}
+                            onChange={(e) => handleAnswerChange(e)}
+                        />
+
+                        <RadioQuestion
+                            question="Smoking Status"
+                            name="smokingStatus"
+                            options={['Former', 'Current', 'Never']}
+                            onChange={(e) => handleAnswerChange(e)}
+                        />
+
+                        <RadioQuestion
+                            question="Alcohol Consumption"
+                            name="alcoholConsumption"
+                            options={['Occasional', 'Frequent', 'None']}
+                            onChange={(e) => handleAnswerChange(e)}
+                        />
+
+                        <RadioQuestion
+                            question="Diet"
+                            name="diet"
+                            options={['Low-carb', 'Balanced', 'Vegetarian', 'High-fat']}
+                            onChange={(e) => handleAnswerChange(e)}
+                        />
+
+                        <RadioQuestion
+                            question="Chronic Diseases"
+                            name="chronicDiseases"
+                            options={['Hypertension', 'Diabetes', 'Heart Disease', 'None']}
+                            onChange={(e) => handleAnswerChange(e)}
+                        />
+
+                        <RadioQuestion
+                            question="Medication Use"
+                            name="medicationUse"
+                            options={['Regular', 'Occasional', 'None']}
+                            onChange={(e) => handleAnswerChange(e)}
+                        />
+
+                        <RadioQuestion
+                            question="Family History"
+                            name="familyHistory"
+                            options={['Heart Disease', 'Hypertension', 'Diabetes', 'None']}
+                            onChange={(e) => handleAnswerChange(e)}
+                        />
+
+                        <RadioQuestion
+                            question="Mental Health Status"
+                            name="mentalHealthStatus"
+                            options={['Good', 'Poor', 'Fair', 'Excellent']}
+                            onChange={(e) => handleAnswerChange(e)}
+                        />
+
+                        <RadioQuestion
+                            question="Sleep Patterns"
+                            name="sleepPatterns"
+                            options={['Insomnia', 'Normal', 'Excessive']}
+                            onChange={(e) => handleAnswerChange(e)}
+                        />
 
                         <div className="flex justify-between">
-                            <Button onClick={prevStep}>Kembali</Button>
-                            <Button onClick={nextStep}>Lanjut</Button>
+                            <Button onClick={prevStep}>Back</Button>
+                            <Button onClick={nextStep}>Next</Button>
                         </div>
                     </div>
                 )}
+
 
             </form>
 
