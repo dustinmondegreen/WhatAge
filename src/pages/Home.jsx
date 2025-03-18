@@ -2,13 +2,15 @@ import { useState } from "react";
 import Button from "../components/Button";
 import "../index.css";
 
+import { useEffect } from 'react';
+
 
 export default function Home() {
     const [step, setStep] = useState(1);
     const [biodata, setBiodata] = useState({
         nama: "",
         umur: "",
-        gender: "",
+        jeniskelamin: "",
         tinggibadan: "",
         beratbadan: "",
     });
@@ -25,9 +27,30 @@ export default function Home() {
     const prevStep = () => setStep(step - 1);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setBiodata({ ...biodata, [name]: value });
+        let value = e.target.value;
+    
+        if (value.length > 3) {
+            value = value.slice(0, 3);
+        }
+    
+        setBiodata({ ...biodata, [e.target.name]: e.target.value });
     };
+    
+    useEffect(() => {
+        const filledFields = Object.values(biodata).filter((field) => field !== "").length;
+
+        let stepProgress = 0;
+        if (step === 2) {
+            stepProgress = 100 / 5; 
+        } else if (step === 3) {
+            stepProgress = 100 / 5;
+        }
+    
+        const percentage = (filledFields * stepProgress);
+        setProgress(percentage);
+    }, [biodata, step]);
+    
+    
 
     const handleMaxValue = (e, name, max) => {
         const value = e.target.value;
@@ -39,13 +62,6 @@ export default function Home() {
         }
         setBiodata({ ...biodata, [name]: e.target.value });
     };
-
-    useEffect(() => {
-        const filledFields = Object.values(biodata).filter((field) => field !== "").length;
-        const totalFields = Object.keys(biodata).length;
-        const percentage = (filledFields / totalFields) * 100;
-        setProgress(percentage);
-    }, [biodata]);
 
     return (
         <div className="items-center justify-center bg-blue-200 h-screen">
@@ -70,7 +86,7 @@ export default function Home() {
                         <div className="flex w-full">
                             <div className="w-2/5 bg-cover h-screen" style={{ backgroundImage: 'url(/view.jpg)' }}></div>
 
-                            <div className="flex flex-col justify-between w-3/5 p-16">
+                            <div className="flex flex-col justify-between w-3/5 px-16 pt-16 pb-8">
                                 <div>
                                     <h1 className="text-5xl">Biodata</h1>
                                     <h2 className="font-light mt-2">Masukkan biodata terlebih dahulu untuk memulai</h2>
@@ -136,7 +152,7 @@ export default function Home() {
                                     </div>
 
                                     <div className="col-start-1 col-end-3">
-                                        <label className="border-black text-lg block font-medium">Jenis Kelamin</label>
+                                        <label className="border-black text-lg font-medium">Jenis Kelamin</label>
                                         <div className="flex items-center mb-3 mt-1">
                                             <label className="mr-6">
                                                 <input
@@ -177,14 +193,21 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                <div className="flex justify-between">
-                                    <Button onClick={prevStep}>Back</Button>
-                                    <Button onClick={nextStep}>Next</Button>
-                                </div>
+                                <div className="flex flex-col gap-2">
+                                    <div className="flex justify-between">
+                                        <Button onClick={prevStep}>Back</Button>
+                                        <Button onClick={nextStep}>Next</Button>
+                                    </div>
 
-                                <div className="mt-4">
-                                    <progress className="w-full" value={progress} max="100"></progress>
-                                    <div className="text-center mt-2">{Math.round(progress)}% Complete</div>
+                                    <div className="mt-4">
+                                        <div className="text-xs font-light mb-0">{Math.round(progress)}% Complete</div>
+                                        <div className="w-full h-1.5 bg-gray-300 mt-1">
+                                            <div
+                                                className="h-full bg-black transition-all duration-300 ease-in-out"
+                                                style={{ width: `${progress}%` }}
+                                            ></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
