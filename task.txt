@@ -1,0 +1,45 @@
+EDA
+1. Memahami Dataset
+Memuat dataset dan memeriksa dimensi serta struktur.
+
+2. Memeriksa Statistik Deskriptif
+Meninjau statistik ringkasan seperti mean, median, min, max, dan standar deviasi.
+Mengetahui distribusi fitur (rata-rata, sebaran, skala).
+Mendeteksi potensi outlier dan nilai ekstrem.        Aman dari Outliers
+
+3. Menangani Data Hilang (Missing Values)
+Memeriksa jumlah data yang hilang di setiap kolom. Aman
+
+4. Mendeteksi dan Menangani Outlier
+Mencari data yang jauh dari distribusi normal (outlier). Aman
+
+5. Memahami Korelasi Antar Fitur
+Mengecek hubungan antara fitur numerik dan target.
+Menemukan fitur yang berkorelasi tinggi (multikolinearitas).
+Memilih fitur yang paling relevan untuk prediksi.
+
+6. Visualisasi Data
+Membuat grafik untuk memahami pola, distribusi, dan anomali.
+Visualisasi Umum:
+Distribusi: sns.histplot() – Melihat sebaran fitur.
+Kategorikal: sns.countplot() – Frekuensi kategori.
+Hubungan: sns.pairplot() – Hubungan antar fitur.
+Time Series: plt.plot() – Pola terhadap waktu.
+
+7. Menganalisis Fitur Kategorikal
+Melihat proporsi dan distribusi kategori.
+
+8. Feature Engineering (Membuat Fitur Baru)
+Menambah atau memodifikasi fitur berdasarkan analisis.
+Contoh:
+Membuat fitur usia dalam kelompok (Muda, Dewasa, Lansia).
+
+9. Memeriksa Bias atau Imbalance pada Target
+Mengecek distribusi kelas pada variabel target.
+Contoh:
+python
+Copy
+Edit
+print(df['target'].value_counts(normalize=True))
+Penanganan:
+Oversampling (SMOTE) atau Undersampling untuk mengatasi ketidakseimbangan kelas.
