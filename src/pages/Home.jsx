@@ -14,6 +14,27 @@ export default function Home() {
         tinggibadan: "",
         beratbadan: "",
     });
+
+    const [answers, setAnswers] = useState({
+        activityLevel: '',
+        smokingStatus: '',
+        alcoholConsumption: '',
+        diet: '',
+        chronicDiseases: '',
+        medicationUse: '',
+        familyHistory: '',
+        mentalHealthStatus: '',
+        sleepPatterns: ''
+    });
+    
+    const handleAnswerChange = (e) => {
+        const { name, value } = e.target;
+        setAnswers((prevAnswers) => ({
+            ...prevAnswers,
+            [name]: value
+        }));
+    };
+    
     
     const [errors, setErrors] = useState({
         nama: false,
@@ -65,26 +86,38 @@ export default function Home() {
         setBiodata({ ...biodata, [name]: e.target.value });
     };
 
-    const RadioQuestion = ({ question, options, name, onChange }) => (
-        <div className="my-4">
-            <h2 className="font-medium">{question}</h2>
-            <div className="flex space-x-4 mt-2">
+    const RadioQuestion = ({ question, options, name, number, value, onChange }) => (
+        <div className="my-6">
+            <div className="flex items-center mx-12 mb-3">
+                <div className="flex justify-center items-center w-12 h-12 rounded-full bg-black text-white text-xl font-bold">
+                    {number}
+                </div>
+                <h1 className="text-2xl font-medium ml-6">{question}</h1>
+            </div>
+
+            <div className="flex flex-wrap space-x-4 ml-12">
                 {options.map((option) => (
                     <label key={option} className="cursor-pointer">
                         <input
                             type="radio"
                             name={name}
                             value={option}
-                            className="mr-2"
+                            checked={value === option}
                             onChange={onChange}
+                            className="hidden"
                         />
-                        {option}
+                        <span
+                            className={`p-3 px-4 flex justify-center border w-40 border-black cursor-pointer hover:bg-black hover:text-white ${
+                                value === option ? 'bg-black text-white' : 'bg-white text-black'
+                            }`}
+                        >
+                            {option}
+                        </span>
                     </label>
                 ))}
             </div>
         </div>
     );
-    
 
     return (
         <div className="items-center justify-center bg-blue-200 h-screen">
@@ -242,15 +275,9 @@ export default function Home() {
 
                 {step === 3 && (
                     <div className="h-screen w-screen mx-32 mt-32 bg-red-100 border-2 border-black">
-                        <div className="flex items-center m-12">
-                            <div className="flex justify-center items-center w-12 h-12 rounded-full bg-black text-white text-xl font-bold">
-                                1
-                            </div>
-                            <h1 className="text-2xl font-medium ml-6">Physical Activity Level:</h1>
-                        </div>
-                        
                         <RadioQuestion
                             question="Physical Activity Level"
+                            number="1"
                             name="activityLevel"
                             options={['Moderate', 'Low', 'High']}
                             onChange={(e) => handleAnswerChange(e)}
@@ -258,6 +285,7 @@ export default function Home() {
 
                         <RadioQuestion
                             question="Smoking Status"
+                            number="2"
                             name="smokingStatus"
                             options={['Former', 'Current', 'Never']}
                             onChange={(e) => handleAnswerChange(e)}
@@ -265,6 +293,7 @@ export default function Home() {
 
                         <RadioQuestion
                             question="Alcohol Consumption"
+                            number="3"
                             name="alcoholConsumption"
                             options={['Occasional', 'Frequent', 'None']}
                             onChange={(e) => handleAnswerChange(e)}
@@ -272,6 +301,7 @@ export default function Home() {
 
                         <RadioQuestion
                             question="Diet"
+                            number="4"
                             name="diet"
                             options={['Low-carb', 'Balanced', 'Vegetarian', 'High-fat']}
                             onChange={(e) => handleAnswerChange(e)}
@@ -279,13 +309,24 @@ export default function Home() {
 
                         <RadioQuestion
                             question="Chronic Diseases"
+                            number="5"
                             name="chronicDiseases"
                             options={['Hypertension', 'Diabetes', 'Heart Disease', 'None']}
                             onChange={(e) => handleAnswerChange(e)}
                         />
 
+                        <div className="flex justify-between">
+                            <Button onClick={prevStep}>Back</Button>
+                            <Button onClick={nextStep}>Next</Button>
+                        </div>
+                    </div>
+                )}
+
+                {step === 4 && (
+                    <div className="h-screen w-screen mx-32 mt-32 bg-red-100 border-2 border-black">
                         <RadioQuestion
                             question="Medication Use"
+                            number="6"
                             name="medicationUse"
                             options={['Regular', 'Occasional', 'None']}
                             onChange={(e) => handleAnswerChange(e)}
@@ -293,6 +334,7 @@ export default function Home() {
 
                         <RadioQuestion
                             question="Family History"
+                            number="7"
                             name="familyHistory"
                             options={['Heart Disease', 'Hypertension', 'Diabetes', 'None']}
                             onChange={(e) => handleAnswerChange(e)}
@@ -300,6 +342,7 @@ export default function Home() {
 
                         <RadioQuestion
                             question="Mental Health Status"
+                            number="8"
                             name="mentalHealthStatus"
                             options={['Good', 'Poor', 'Fair', 'Excellent']}
                             onChange={(e) => handleAnswerChange(e)}
@@ -307,6 +350,7 @@ export default function Home() {
 
                         <RadioQuestion
                             question="Sleep Patterns"
+                            number="9"
                             name="sleepPatterns"
                             options={['Insomnia', 'Normal', 'Excessive']}
                             onChange={(e) => handleAnswerChange(e)}
@@ -318,8 +362,6 @@ export default function Home() {
                         </div>
                     </div>
                 )}
-
-
             </form>
 
             <div className="fixed bottom-0 left-0 w-full bg-gray-200 h-2">
