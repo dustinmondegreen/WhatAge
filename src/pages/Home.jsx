@@ -87,34 +87,35 @@ export default function Home() {
     };
 
     const RadioQuestion = ({ question, options, name, number, value, onChange }) => (
-        <div className="my-6">
-            <div className="flex items-center mx-12 mb-3">
-                <div className="flex justify-center items-center w-12 h-12 rounded-full bg-black text-white text-xl font-bold">
-                    {number}
-                </div>
-                <h1 className="text-2xl font-medium ml-6">{question}</h1>
+        <div className="flex justify-star my-6">
+            <div className="flex justify-center items-center w-8 h-8 rounded-full bg-black text-white text-lg font-medium p-5 m-3">
+                {number}
             </div>
 
-            <div className="flex flex-wrap space-x-4 ml-12">
-                {options.map((option) => (
-                    <label key={option} className="cursor-pointer">
-                        <input
-                            type="radio"
-                            name={name}
-                            value={option}
-                            checked={value === option}
-                            onChange={onChange}
-                            className="hidden"
-                        />
-                        <span
-                            className={`p-3 px-4 flex justify-center border w-40 border-black cursor-pointer hover:bg-black hover:text-white ${
-                                value === option ? 'bg-black text-white' : 'bg-white text-black'
-                            }`}
-                        >
-                            {option}
-                        </span>
-                    </label>
-                ))}
+            <div className="mt-3 ml-2">
+                <h1 className="text-2xl font-medium">{question}</h1>
+
+                <div className="flex flex-wrap gap-2 mt-2">
+                    {options.map((option) => (
+                        <label key={option} className="cursor-pointer">
+                            <input
+                                type="radio"
+                                name={name}
+                                value={option}
+                                checked={value === option}
+                                onChange={onChange}
+                                className="hidden"
+                            />
+                            <span
+                                className={`p-3 px-4 flex justify-center border w-40 border-black cursor-pointer hover:bg-black hover:text-white ${
+                                    value === option ? 'bg-black text-white' : 'bg-white text-black'
+                                }`}
+                            >
+                                {option}
+                            </span>
+                        </label>
+                    ))}
+                </div>
             </div>
         </div>
     );
