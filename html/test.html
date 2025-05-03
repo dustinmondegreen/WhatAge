@@ -3,136 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/test.css">
     <title>Test Page</title>
 </head>
 <body>
-    <h1>Health Personality Test</h1>
+    <h1 class="header">Health Personality Test</h1>
     <form id="health-form">
-
-        <!-- INPUT BIASA -->
         <fieldset>
           <legend>Basic Information</legend>
+          <label>Age (years): <input type="number" name="age" required></label>
           <label>Height (cm): <input type="number" name="height" required></label>
           <label>Weight (kg): <input type="number" name="weight" required></label>
-          <label>Blood Pressure (systolic/diastolic): <input type="text" name="blood_pressure" placeholder="e.g. 120/80" required></label>
-          <label>Cholesterol Level (mg/dL): <input type="number" name="cholesterol"></label>
-          <label>BMI: <input type="number" step="0.01" name="bmi"></label>
-          <label>Blood Glucose Level (mg/dL): <input type="number" name="glucose"></label>
-          <label>Bone Density (g/cm²): <input type="number" step="0.001" name="bone_density"></label>
-          <label>Vision Sharpness (0-1): <input type="number" step="0.01" name="vision"></label>
-          <label>Hearing Ability (dB): <input type="number" name="hearing"></label>
-          <label>Cognitive Function (score): <input type="number" step="0.01" name="cognitive"></label>
-          <label>Stress Levels (0-10): <input type="number" step="0.01" name="stress"></label>
-          <label>Pollution Exposure (0-10): <input type="number" step="0.01" name="pollution"></label>
-          <label>Sun Exposure (0-10): <input type="number" step="0.01" name="sun"></label>
-          <label>Age (years): <input type="number" name="age" required></label>
-        </fieldset>
-    
-        <!-- PILIHAN CHECKBOX (1 PILIHAN/GRUP) -->
-        <fieldset>
-          <legend>Gender</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="gender" value="Male"> Male</label>
-            <label><input type="checkbox" name="gender" value="Female"> Female</label>
+
+          <label>Gender</label>
+          <div class="radio-group">
+            <label><input type="radio" name="gender" value="Male"> Male</label>
+            <label><input type="radio" name="gender" value="Female"> Female</label>
           </div>
         </fieldset>
     
         <fieldset>
+            <label>Blood Pressure (systolic/diastolic): <input type="text" name="blood_pressure" placeholder="e.g. 120/80" required></label>
+            <label>Cholesterol Level (mg/dL): <input type="number" name="cholesterol"></label>
+            <label>BMI: <input type="number" step="0.01" name="bmi"></label>
+            <label>Blood Glucose Level (mg/dL): <input type="number" name="glucose"></label>
+            <label>Bone Density (g/cm²): <input type="number" step="0.001" name="bone_density"></label>
+            <label>Vision Sharpness (0-1): <input type="number" step="0.01" name="vision"></label>
+            <label>Hearing Ability (dB): <input type="number" name="hearing"></label>
+            <label>Cognitive Function (score): <input type="number" step="0.01" name="cognitive"></label>
+            <label>Stress Levels (0-10): <input type="number" step="0.01" name="stress"></label>
+            <label>Pollution Exposure (0-10): <input type="number" step="0.01" name="pollution"></label>
+            <label>Sun Exposure (0-10): <input type="number" step="0.01" name="sun"></label>
+        </fieldset>
+    
+        <fieldset>
           <legend>Physical Activity Level</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="activity" value="Low"> Low</label>
-            <label><input type="checkbox" name="activity" value="Moderate"> Moderate</label>
-            <label><input type="checkbox" name="activity" value="High"> High</label>
+          <div class="radio-group">
+            <label><input type="radio" name="activity" value="Low"> Low</label>
+            <label><input type="radio" name="activity" value="Moderate"> Moderate</label>
+            <label><input type="radio" name="activity" value="High"> High</label>
           </div>
         </fieldset>
     
         <fieldset>
           <legend>Smoking Status</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="smoking" value="Never"> Never</label>
-            <label><input type="checkbox" name="smoking" value="Former"> Former</label>
-            <label><input type="checkbox" name="smoking" value="Current"> Current</label>
+          <div class="radio-group">
+            <label><input type="radio" name="smoking" value="Never"> Never</label>
+            <label><input type="radio" name="smoking" value="Former"> Former</label>
+            <label><input type="radio" name="smoking" value="Current"> Current</label>
           </div>
         </fieldset>
     
         <fieldset>
           <legend>Alcohol Consumption</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="alcohol" value="Occasional"> Occasional</label>
-            <label><input type="checkbox" name="alcohol" value="Frequent"> Frequent</label>
+          <div class="radio-group">
+            <label><input type="radio" name="alcohol" value="Occasional"> Occasional</label>
+            <label><input type="radio" name="alcohol" value="Frequent"> Frequent</label>
           </div>
         </fieldset>
     
         <fieldset>
           <legend>Diet</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="diet" value="Balanced"> Balanced</label>
-            <label><input type="checkbox" name="diet" value="Low-carb"> Low-carb</label>
-            <label><input type="checkbox" name="diet" value="Vegetarian"> Vegetarian</label>
-            <label><input type="checkbox" name="diet" value="High-fat"> High-fat</label>
+          <div class="radio-group">
+            <label><input type="radio" name="diet" value="Balanced"> Balanced</label>
+            <label><input type="radio" name="diet" value="Low-carb"> Low-carb</label>
+            <label><input type="radio" name="diet" value="Vegetarian"> Vegetarian</label>
+            <label><input type="radio" name="diet" value="High-fat"> High-fat</label>
           </div>
         </fieldset>
     
         <fieldset>
           <legend>Chronic Diseases</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="chronic" value="Hypertension"> Hypertension</label>
-            <label><input type="checkbox" name="chronic" value="Diabetes"> Diabetes</label>
-            <label><input type="checkbox" name="chronic" value="Heart Disease"> Heart Disease</label>
+          <div class="radio-group">
+            <label><input type="radio" name="chronic" value="Hypertension"> Hypertension</label>
+            <label><input type="radio" name="chronic" value="Diabetes"> Diabetes</label>
+            <label><input type="radio" name="chronic" value="Heart Disease"> Heart Disease</label>
           </div>
         </fieldset>
     
         <fieldset>
           <legend>Medication Use</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="medication" value="Regular"> Regular</label>
-            <label><input type="checkbox" name="medication" value="Occasional"> Occasional</label>
+          <div class="radio-group">
+            <label><input type="radio" name="medication" value="Regular"> Regular</label>
+            <label><input type="radio" name="medication" value="Occasional"> Occasional</label>
           </div>
         </fieldset>
     
         <fieldset>
           <legend>Family History</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="family" value="Hypertension"> Hypertension</label>
-            <label><input type="checkbox" name="family" value="Diabetes"> Diabetes</label>
-            <label><input type="checkbox" name="family" value="Heart Disease"> Heart Disease</label>
+          <div class="radio-group">
+            <label><input type="radio" name="family" value="Hypertension"> Hypertension</label>
+            <label><input type="radio" name="family" value="Diabetes"> Diabetes</label>
+            <label><input type="radio" name="family" value="Heart Disease"> Heart Disease</label>
           </div>
         </fieldset>
     
         <fieldset>
           <legend>Mental Health Status</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="mental" value="Excellent"> Excellent</label>
-            <label><input type="checkbox" name="mental" value="Good"> Good</label>
-            <label><input type="checkbox" name="mental" value="Fair"> Fair</label>
-            <label><input type="checkbox" name="mental" value="Poor"> Poor</label>
+          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit laboriosam, sint perspiciatis quo, fugiat officia qui ipsam repudiandae sunt aliquid, cupiditate porro et possimus? Beatae eos labore in saepe nostrum?</h3>
+          <div class="radio-group">
+            <label><input type="radio" name="mental" value="Excellent"> Excellent</label>
+            <label><input type="radio" name="mental" value="Good"> Good</label>
+            <label><input type="radio" name="mental" value="Fair"> Fair</label>
+            <label><input type="radio" name="mental" value="Poor"> Poor</label>
           </div>
         </fieldset>
     
         <fieldset>
           <legend>Sleep Patterns</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="sleep" value="Normal"> Normal</label>
-            <label><input type="checkbox" name="sleep" value="Insomnia"> Insomnia</label>
-            <label><input type="checkbox" name="sleep" value="Excessive"> Excessive</label>
+          <div class="radio-group">
+            <label><input type="radio" name="sleep" value="Normal"> Normal</label>
+            <label><input type="radio" name="sleep" value="Insomnia"> Insomnia</label>
+            <label><input type="radio" name="sleep" value="Excessive"> Excessive</label>
           </div>
         </fieldset>
     
         <fieldset>
           <legend>Education Level</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="education" value="None"> None</label>
-            <label><input type="checkbox" name="education" value="Undergraduate"> Undergraduate</label>
-            <label><input type="checkbox" name="education" value="Graduate"> Graduate</label>
+          <div class="radio-group">
+            <label><input type="radio" name="education" value="None"> None</label>
+            <label><input type="radio" name="education" value="Undergraduate"> Undergraduate</label>
+            <label><input type="radio" name="education" value="Graduate"> Graduate</label>
           </div>
         </fieldset>
     
         <fieldset>
           <legend>Income Level</legend>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="income" value="Low"> Low</label>
-            <label><input type="checkbox" name="income" value="Medium"> Medium</label>
-            <label><input type="checkbox" name="income" value="High"> High</label>
+          <div class="radio-group">
+            <label><input type="radio" name="income" value="Low"> Low</label>
+            <label><input type="radio" name="income" value="Medium"> Medium</label>
+            <label><input type="radio" name="income" value="High"> High</label>
           </div>
         </fieldset>
     
