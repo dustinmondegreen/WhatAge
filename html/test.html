@@ -16,11 +16,15 @@
       <section id="test-page-1">
         <div class="form-input">
           <label>Gender</label>
-          <div>
-            <input type="radio" name="gender" value="Male"> Male
-            <input type="radio" name="gender" value="Female"> Female
+          <div class="options">
+            <label class="radio-box">
+              <input type="radio" name="gender" value="Male"> Male
+            </label>
+            <label class="radio-box">
+              <input type="radio" name="gender" value="Female"> Female
+            </label>
           </div>
-        </div>
+        </div>        
 
         <hr>
 
@@ -60,58 +64,77 @@
 
       <section id="test-page-2">
         <div class="form-input">
-          <label>Blood Pressure (systolic/diastolic):</label>
-          <input type="text" name="blood_pressure" placeholder="e.g. 120/80" required>
-        </div>
-        
-        <div class="form-input">
-          <label>Cholesterol Level (mg/dL):</label>
-          <input type="number" name="cholesterol">
+          <label>Cholesterol Level</label>
+          <div class="input-wrapper">
+            <input type="number" name="cholesterol">
+            <span class="unit">mg/dL</span>
+          </div>
         </div>
         
         <div class="form-input">
           <label>BMI:</label>
-          <input type="number" step="0.01" name="bmi">
+          <div class="input-wrapper">
+            <input type="number" step="0.01" name="bmi">
+          </div>        
         </div>
         
         <div class="form-input">
-          <label>Blood Glucose Level (mg/dL):</label>
-          <input type="number" name="glucose">
+          <label>Blood Glucose Level</label>
+          <div class="input-wrapper">
+            <input type="number" name="glucose">
+            <span class="unit">mg/dL</span>
+          </div>  
         </div>
         
         <div class="form-input">
-          <label>Bone Density (g/cm²):</label>
-          <input type="number" step="0.001" name="bone_density">
+          <label>Bone Density</label>
+          <div class="input-wrapper">
+            <input type="number" step="0.001" name="bone_density">
+            <span class="unit">g/cm²</span>
+          </div>
         </div>
         
         <div class="form-input">
           <label>Vision Sharpness (0-1):</label>
-          <input type="number" step="0.01" name="vision">
+          <div class="input-wrapper">
+            <input type="number" step="0.01" name="vision">
+          </div>
         </div>
         
         <div class="form-input">
-          <label>Hearing Ability (dB):</label>
-          <input type="number" name="hearing">
+          <label>Hearing Ability</label>
+          <div class="input-wrapper">
+            <input type="number" name="hearing">
+            <span class="unit">dB</span>
+          </div>
         </div>
         
         <div class="form-input">
           <label>Cognitive Function (score):</label>
-          <input type="number" step="0.01" name="cognitive">
+          <div class="input-wrapper">
+            <input type="number" step="0.01" name="cognitive">
+          </div>
         </div>
         
         <div class="form-input">
           <label>Stress Levels (0-10):</label>
-          <input type="number" step="0.01" name="stress">
+          <div class="input-wrapper">
+            <input type="number" step="0.01" name="stress">
+          </div>
         </div>
         
         <div class="form-input">
           <label>Pollution Exposure (0-10):</label>
-          <input type="number" step="0.01" name="pollution">
+          <div class="input-wrapper">
+            <input type="number" step="0.01" name="pollution">
+          </div>
         </div>
         
         <div class="form-input">
           <label>Sun Exposure (0-10):</label>
-          <input type="number" step="0.01" name="sun">
+          <div class="input-wrapper">
+            <input type="number" step="0.01" name="sun">
+          </div>
         </div>
         
         <div class="test-button">
@@ -122,111 +145,188 @@
 
       <section id="test-page-3">
         <div class="form-input">
-          <label>Physical Activity Level:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="activity" value="Low"> Low</label>
-            <label><input type="radio" name="activity" value="Moderate"> Moderate</label>
-            <label><input type="radio" name="activity" value="High"> High</label>
+          <label>Blood Pressure</label>
+          <div class="options">
+            <label class="radio-box">
+              <input type="radio" name="bloodPressure" value="systolic"> Systolic
+            </label>
+            <label class="radio-box">
+              <input type="radio" name="bloodPressure" value="Diastolic"> Diastolic
+            </label>
           </div>
         </div>
-        
+
         <div class="form-input">
-          <label>Smoking Status:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="smoking" value="Never"> Never</label>
-            <label><input type="radio" name="smoking" value="Former"> Former</label>
-            <label><input type="radio" name="smoking" value="Current"> Current</label>
-          </div>
+            <label>Physical Activity Level</label>
+            <div class="options">
+                <label class="radio-box">
+                    <input type="radio" name="activity" value="Low"> Low
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="activity" value="Moderate"> Moderate
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="activity" value="High"> High
+                </label>
+            </div>
         </div>
-        
+    
         <div class="form-input">
-          <label>Alcohol Consumption:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="alcohol" value="Occasional"> Occasional</label>
-            <label><input type="radio" name="alcohol" value="Frequent"> Frequent</label>
-          </div>
+            <label>Smoking Status</label>
+            <div class="options">
+                <label class="radio-box">
+                    <input type="radio" name="smoking" value="Never"> Never
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="smoking" value="Former"> Former
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="smoking" value="Current"> Current
+                </label>
+            </div>
         </div>
-        
+    
         <div class="form-input">
-          <label>Diet:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="diet" value="Balanced"> Balanced</label>
-            <label><input type="radio" name="diet" value="Low-carb"> Low-carb</label>
-            <label><input type="radio" name="diet" value="Vegetarian"> Vegetarian</label>
-            <label><input type="radio" name="diet" value="High-fat"> High-fat</label>
-          </div>
+            <label>Alcohol Consumption</label>
+            <div class="options">
+                <label class="radio-box">
+                    <input type="radio" name="alcohol" value="Occasional"> Occasional
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="alcohol" value="Frequent"> Frequent
+                </label>
+            </div>
         </div>
-        
+    
         <div class="form-input">
-          <label>Chronic Diseases:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="chronic" value="Hypertension"> Hypertension</label>
-            <label><input type="radio" name="chronic" value="Diabetes"> Diabetes</label>
-            <label><input type="radio" name="chronic" value="Heart Disease"> Heart Disease</label>
-          </div>
+            <label>Diet</label>
+            <div class="options">
+                <label class="radio-box">
+                    <input type="radio" name="diet" value="Balanced"> Balanced
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="diet" value="Low-carb"> Low-carb
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="diet" value="Vegetarian"> Vegetarian
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="diet" value="High-fat"> High-fat
+                </label>
+            </div>
         </div>
-        
+    
         <div class="form-input">
-          <label>Medication Use:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="medication" value="Regular"> Regular</label>
-            <label><input type="radio" name="medication" value="Occasional"> Occasional</label>
-          </div>
+            <label>Chronic Diseases</label>
+            <div class="options">
+                <label class="radio-box">
+                    <input type="radio" name="chronic" value="Hypertension"> Hypertension
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="chronic" value="Diabetes"> Diabetes
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="chronic" value="Heart Disease"> Heart Disease
+                </label>
+            </div>
         </div>
-        
+    
         <div class="form-input">
-          <label>Family History:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="family" value="Hypertension"> Hypertension</label>
-            <label><input type="radio" name="family" value="Diabetes"> Diabetes</label>
-            <label><input type="radio" name="family" value="Heart Disease"> Heart Disease</label>
-          </div>
+            <label>Medication Use</label>
+            <div class="options">
+                <label class="radio-box">
+                    <input type="radio" name="medication" value="Regular"> Regular
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="medication" value="Occasional"> Occasional
+                </label>
+            </div>
         </div>
-        
+    
         <div class="form-input">
-          <label>Mental Health Status:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="mental" value="Excellent"> Excellent</label>
-            <label><input type="radio" name="mental" value="Good"> Good</label>
-            <label><input type="radio" name="mental" value="Fair"> Fair</label>
-            <label><input type="radio" name="mental" value="Poor"> Poor</label>
-          </div>
+            <label>Family History</label>
+            <div class="options">
+                <label class="radio-box">
+                    <input type="radio" name="family" value="Hypertension"> Hypertension
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="family" value="Diabetes"> Diabetes
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="family" value="Heart Disease"> Heart Disease
+                </label>
+            </div>
         </div>
-        
+    
         <div class="form-input">
-          <label>Sleep Patterns:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="sleep" value="Normal"> Normal</label>
-            <label><input type="radio" name="sleep" value="Insomnia"> Insomnia</label>
-            <label><input type="radio" name="sleep" value="Excessive"> Excessive</label>
-          </div>
+            <label>Mental Health Status</label>
+            <div class="options">
+                <label class="radio-box">
+                    <input type="radio" name="mental" value="Excellent"> Excellent
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="mental" value="Good"> Good
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="mental" value="Fair"> Fair
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="mental" value="Poor"> Poor
+                </label>
+            </div>
         </div>
-        
+    
         <div class="form-input">
-          <label>Education Level:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="education" value="None"> None</label>
-            <label><input type="radio" name="education" value="Undergraduate"> Undergraduate</label>
-            <label><input type="radio" name="education" value="Graduate"> Graduate</label>
-          </div>
+            <label>Sleep Patterns</label>
+            <div class="options">
+                <label class="radio-box">
+                    <input type="radio" name="sleep" value="Normal"> Normal
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="sleep" value="Insomnia"> Insomnia
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="sleep" value="Excessive"> Excessive
+                </label>
+            </div>
         </div>
-        
+    
         <div class="form-input">
-          <label>Income Level:</label>
-          <div class="radio-group">
-            <label><input type="radio" name="income" value="Low"> Low</label>
-            <label><input type="radio" name="income" value="Medium"> Medium</label>
-            <label><input type="radio" name="income" value="High"> High</label>
-          </div>
+            <label>Education Level</label>
+            <div class="options">
+                <label class="radio-box">
+                    <input type="radio" name="education" value="None"> None
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="education" value="Undergraduate"> Undergraduate
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="education" value="Graduate"> Graduate
+                </label>
+            </div>
         </div>
-        
+    
+        <div class="form-input">
+            <label>Income Level</label>
+            <div class="options">
+                <label class="radio-box">
+                    <input type="radio" name="income" value="Low"> Low
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="income" value="Medium"> Medium
+                </label>
+                <label class="radio-box">
+                    <input type="radio" name="income" value="High"> High
+                </label>
+            </div>
+        </div>
+    
         <div class="test-button">
-          <button class="btn-back" id="test-page-3-btn-back">Back</button>
-          <button class="btn-next" id="test-page-3-btn-next">Next</button>
+            <button class="btn-back" id="test-page-3-btn-back">Back</button>
+            <button class="btn-next" id="test-page-3-btn-next">Next</button>
         </div>
       </section>
     </form>
-
     <script src="../script.js"></script>
 </body>
 </html>
