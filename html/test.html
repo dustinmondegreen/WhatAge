@@ -7,136 +7,226 @@
     <title>Test Page</title>
 </head>
 <body>
-    <h1 class="header">Health Personality Test</h1>
-    <form id="health-form">
-        <fieldset>
-          <legend>Basic Information</legend>
-          <label>Age (years): <input type="number" name="age" required></label>
-          <label>Height (cm): <input type="number" name="height" required></label>
-          <label>Weight (kg): <input type="number" name="weight" required></label>
+    <div class="header">
+      <h1>Health Personality Test</h1>
+      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt autem accusamus quasi modi labore neque earum reprehenderit, inventore nesciunt adipisci?</h2>
+    </div>
 
+    <form id="health-form">
+      <section id="test-page-1">
+        <div class="form-input">
           <label>Gender</label>
-          <div class="radio-group">
-            <label><input type="radio" name="gender" value="Male"> Male</label>
-            <label><input type="radio" name="gender" value="Female"> Female</label>
+          <div>
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female"> Female
           </div>
-        </fieldset>
-    
-        <fieldset>
-            <label>Blood Pressure (systolic/diastolic): <input type="text" name="blood_pressure" placeholder="e.g. 120/80" required></label>
-            <label>Cholesterol Level (mg/dL): <input type="number" name="cholesterol"></label>
-            <label>BMI: <input type="number" step="0.01" name="bmi"></label>
-            <label>Blood Glucose Level (mg/dL): <input type="number" name="glucose"></label>
-            <label>Bone Density (g/cm²): <input type="number" step="0.001" name="bone_density"></label>
-            <label>Vision Sharpness (0-1): <input type="number" step="0.01" name="vision"></label>
-            <label>Hearing Ability (dB): <input type="number" name="hearing"></label>
-            <label>Cognitive Function (score): <input type="number" step="0.01" name="cognitive"></label>
-            <label>Stress Levels (0-10): <input type="number" step="0.01" name="stress"></label>
-            <label>Pollution Exposure (0-10): <input type="number" step="0.01" name="pollution"></label>
-            <label>Sun Exposure (0-10): <input type="number" step="0.01" name="sun"></label>
-        </fieldset>
-    
-        <fieldset>
-          <legend>Physical Activity Level</legend>
+        </div>
+
+        <hr>
+
+        <div class="test-page-1-row-1">
+          <div class="form-input">
+            <label>Age</label>
+            <div class="input-wrapper">
+              <input type="number" name="age" required oninput="this.value = this.value.slice(0, 3)">
+              <span class="unit">years</span>
+            </div>
+          </div>
+
+          <div class="form-input">
+            <label>Height</label>
+            <div class="input-wrapper">
+              <input type="number" name="height" required oninput="this.value = this.value.slice(0, 3)">
+              <span class="unit">cm</span>
+            </div>
+          </div>
+  
+          <div class="form-input">
+            <label>Weight</label>
+            <div class="input-wrapper">
+              <input type="number" name="weight" required oninput="this.value = this.value.slice(0, 3)">
+              <span class="unit">kg</span>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="test-button">
+          <button class="btn-back" id="test-page-1-btn-back">Back</button>
+          <button class="btn-next" id="test-page-1-btn-next">Next</button>
+        </div>
+      </section>
+
+      <section id="test-page-2">
+        <div class="form-input">
+          <label>Blood Pressure (systolic/diastolic):</label>
+          <input type="text" name="blood_pressure" placeholder="e.g. 120/80" required>
+        </div>
+        
+        <div class="form-input">
+          <label>Cholesterol Level (mg/dL):</label>
+          <input type="number" name="cholesterol">
+        </div>
+        
+        <div class="form-input">
+          <label>BMI:</label>
+          <input type="number" step="0.01" name="bmi">
+        </div>
+        
+        <div class="form-input">
+          <label>Blood Glucose Level (mg/dL):</label>
+          <input type="number" name="glucose">
+        </div>
+        
+        <div class="form-input">
+          <label>Bone Density (g/cm²):</label>
+          <input type="number" step="0.001" name="bone_density">
+        </div>
+        
+        <div class="form-input">
+          <label>Vision Sharpness (0-1):</label>
+          <input type="number" step="0.01" name="vision">
+        </div>
+        
+        <div class="form-input">
+          <label>Hearing Ability (dB):</label>
+          <input type="number" name="hearing">
+        </div>
+        
+        <div class="form-input">
+          <label>Cognitive Function (score):</label>
+          <input type="number" step="0.01" name="cognitive">
+        </div>
+        
+        <div class="form-input">
+          <label>Stress Levels (0-10):</label>
+          <input type="number" step="0.01" name="stress">
+        </div>
+        
+        <div class="form-input">
+          <label>Pollution Exposure (0-10):</label>
+          <input type="number" step="0.01" name="pollution">
+        </div>
+        
+        <div class="form-input">
+          <label>Sun Exposure (0-10):</label>
+          <input type="number" step="0.01" name="sun">
+        </div>
+        
+        <div class="test-button">
+          <button class="btn-back" id="test-page-2-btn-back">Back</button>
+          <button class="btn-next" id="test-page-2-btn-next">Next</button>
+        </div>
+      </section>
+
+      <section id="test-page-3">
+        <div class="form-input">
+          <label>Physical Activity Level:</label>
           <div class="radio-group">
             <label><input type="radio" name="activity" value="Low"> Low</label>
             <label><input type="radio" name="activity" value="Moderate"> Moderate</label>
             <label><input type="radio" name="activity" value="High"> High</label>
           </div>
-        </fieldset>
-    
-        <fieldset>
-          <legend>Smoking Status</legend>
+        </div>
+        
+        <div class="form-input">
+          <label>Smoking Status:</label>
           <div class="radio-group">
             <label><input type="radio" name="smoking" value="Never"> Never</label>
             <label><input type="radio" name="smoking" value="Former"> Former</label>
             <label><input type="radio" name="smoking" value="Current"> Current</label>
           </div>
-        </fieldset>
-    
-        <fieldset>
-          <legend>Alcohol Consumption</legend>
+        </div>
+        
+        <div class="form-input">
+          <label>Alcohol Consumption:</label>
           <div class="radio-group">
             <label><input type="radio" name="alcohol" value="Occasional"> Occasional</label>
             <label><input type="radio" name="alcohol" value="Frequent"> Frequent</label>
           </div>
-        </fieldset>
-    
-        <fieldset>
-          <legend>Diet</legend>
+        </div>
+        
+        <div class="form-input">
+          <label>Diet:</label>
           <div class="radio-group">
             <label><input type="radio" name="diet" value="Balanced"> Balanced</label>
             <label><input type="radio" name="diet" value="Low-carb"> Low-carb</label>
             <label><input type="radio" name="diet" value="Vegetarian"> Vegetarian</label>
             <label><input type="radio" name="diet" value="High-fat"> High-fat</label>
           </div>
-        </fieldset>
-    
-        <fieldset>
-          <legend>Chronic Diseases</legend>
+        </div>
+        
+        <div class="form-input">
+          <label>Chronic Diseases:</label>
           <div class="radio-group">
             <label><input type="radio" name="chronic" value="Hypertension"> Hypertension</label>
             <label><input type="radio" name="chronic" value="Diabetes"> Diabetes</label>
             <label><input type="radio" name="chronic" value="Heart Disease"> Heart Disease</label>
           </div>
-        </fieldset>
-    
-        <fieldset>
-          <legend>Medication Use</legend>
+        </div>
+        
+        <div class="form-input">
+          <label>Medication Use:</label>
           <div class="radio-group">
             <label><input type="radio" name="medication" value="Regular"> Regular</label>
             <label><input type="radio" name="medication" value="Occasional"> Occasional</label>
           </div>
-        </fieldset>
-    
-        <fieldset>
-          <legend>Family History</legend>
+        </div>
+        
+        <div class="form-input">
+          <label>Family History:</label>
           <div class="radio-group">
             <label><input type="radio" name="family" value="Hypertension"> Hypertension</label>
             <label><input type="radio" name="family" value="Diabetes"> Diabetes</label>
             <label><input type="radio" name="family" value="Heart Disease"> Heart Disease</label>
           </div>
-        </fieldset>
-    
-        <fieldset>
-          <legend>Mental Health Status</legend>
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit laboriosam, sint perspiciatis quo, fugiat officia qui ipsam repudiandae sunt aliquid, cupiditate porro et possimus? Beatae eos labore in saepe nostrum?</h3>
+        </div>
+        
+        <div class="form-input">
+          <label>Mental Health Status:</label>
           <div class="radio-group">
             <label><input type="radio" name="mental" value="Excellent"> Excellent</label>
             <label><input type="radio" name="mental" value="Good"> Good</label>
             <label><input type="radio" name="mental" value="Fair"> Fair</label>
             <label><input type="radio" name="mental" value="Poor"> Poor</label>
           </div>
-        </fieldset>
-    
-        <fieldset>
-          <legend>Sleep Patterns</legend>
+        </div>
+        
+        <div class="form-input">
+          <label>Sleep Patterns:</label>
           <div class="radio-group">
             <label><input type="radio" name="sleep" value="Normal"> Normal</label>
             <label><input type="radio" name="sleep" value="Insomnia"> Insomnia</label>
             <label><input type="radio" name="sleep" value="Excessive"> Excessive</label>
           </div>
-        </fieldset>
-    
-        <fieldset>
-          <legend>Education Level</legend>
+        </div>
+        
+        <div class="form-input">
+          <label>Education Level:</label>
           <div class="radio-group">
             <label><input type="radio" name="education" value="None"> None</label>
             <label><input type="radio" name="education" value="Undergraduate"> Undergraduate</label>
             <label><input type="radio" name="education" value="Graduate"> Graduate</label>
           </div>
-        </fieldset>
-    
-        <fieldset>
-          <legend>Income Level</legend>
+        </div>
+        
+        <div class="form-input">
+          <label>Income Level:</label>
           <div class="radio-group">
             <label><input type="radio" name="income" value="Low"> Low</label>
             <label><input type="radio" name="income" value="Medium"> Medium</label>
             <label><input type="radio" name="income" value="High"> High</label>
           </div>
-        </fieldset>
-    
-        <button type="submit">Submit</button>
-      </form>
+        </div>
+        
+        <div class="test-button">
+          <button class="btn-back" id="test-page-3-btn-back">Back</button>
+          <button class="btn-next" id="test-page-3-btn-next">Next</button>
+        </div>
+      </section>
+    </form>
+
+    <script src="../script.js"></script>
 </body>
 </html>
