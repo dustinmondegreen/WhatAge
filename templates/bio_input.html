@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/Bio_input.css" />
+    <title>Biological Data Input</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Tell Us About Yourself</h1>
+      <h2>Please provide your basic information</h2>
+    </div>
+
+    <form id="bio-form" action="{{ url_for('bio_input') }}" method="POST">
+      <div class="form-group">
+        <!-- Gender Selection -->
+        <div class="form-input">
+          <label>Gender</label>
+          <div class="options">
+            <label class="radio-box">
+              <input type="radio" name="gender" value="male" required />
+              Male
+            </label>
+            <label class="radio-box">
+              <input type="radio" name="gender" value="female" />
+              Female
+            </label>
+          </div>
+        </div>
+
+        <!-- Age Input -->
+        <div class="form-input">
+          <label>Age</label>
+          <div class="input-wrapper">
+            <input type="number" name="age" min="0" max="120" required />
+            <span class="unit">years</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <!-- Height Input -->
+        <div class="form-input">
+          <label>Height</label>
+          <div class="input-wrapper">
+            <input type="number" step="0.01" name="height" required />
+            <span class="unit">cm</span>
+          </div>
+        </div>
+
+        <!-- Weight Input -->
+        <div class="form-input">
+          <label>Weight</label>
+          <div class="input-wrapper">
+            <input type="number" step="0.01" name="weight" required />
+            <span class="unit">kg</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-button">
+        <a href="{{ url_for('home') }}">
+          <button type="button" class="btn-back">Back</button>
+        </a>
+        <button type="submit" class="btn-next">Next</button>
+      </div>
+    </form>
+    <script src="../script.js"></script>
+  </body>
+</html>

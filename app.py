@@ -50,8 +50,25 @@ def login():
             return redirect(url_for('home'))
     return render_template('login.html')
 
-@app.route('/test')
+@app.route('/bio-input', methods=['GET', 'POST'])
+def bio_input():
+    if request.method == 'POST':
+        # Simpan data bio jika diperlukan
+        # contoh: session['bio_data'] = request.form
+        return redirect(url_for('input_data'))
+    return render_template("bio_input.html")
+
+@app.route('/input-data', methods=['GET', 'POST'])
+def input_data():
+    if request.method == 'POST':
+        # Simpan data measurements jika diperlukan
+        return redirect(url_for('test'))
+    return render_template("input_data.html")
+
+@app.route('/test', methods=['GET', 'POST'])
 def test():
+    if request.method == 'POST':
+        return render_template('test.html')
     return render_template('test.html')
 
 if __name__ == '__main__':
