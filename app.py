@@ -116,7 +116,7 @@ def input_data():
         sun = request.form.get('sun')
 
         new_features = Features(
-            cholestorLevel=float(cholesterol),
+            cholesterolLevel=float(cholesterol),
             BMI=float(bmi),
             BloodGlucoseLevel=float(glucose),
             BoneDensity=float(bone_density),
