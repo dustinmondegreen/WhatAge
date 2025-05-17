@@ -16,6 +16,38 @@ class User(db.Model):
     def __repr__(self):
         return f"<Current user is {self.userName}>"
 
+class Features(db.Model):
+    featureID = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    userID = db.Column(db.Integer, db.ForeignKey('user.userID'), foreign_key=True)
+    gender = db.Column(db.String(30))
+    height = db.Column(db.Float())
+    weight = db.Column(db.Float())
+    cholestorLevel = db.Column(db.Float())
+    BMI = db.Column(db.Float())
+    BloodGlucoseLevel = db.Column(db.Float())
+    BoneDensity = db.Column(db.Float())
+    VisionSharpness = db.Column(db.Float())
+    HearingAbility = db.Column(db.Float())
+    physicalActivity = db.Column(db.String(30))
+    smokingStatus = db.Column(db.String(30))
+    alchoholConsumption = db.Column(db.String(30))
+    Diet = db.Column(db.String(30))
+    ChronicDiseases = db.Column(db.String(30))
+    MedicationUse = db.Column(db.String(30))
+    FamilyHistory = db.Column(db.String(30))
+    CognitiveFunction = db.Column(db.Float())
+    MentalHealth = db.Column(db.String(30))
+    SleepPattern = db.Column(db.String(30))
+    StressLevel = db.Column(db.Float(30))
+    PollutionExposure = db.Column(db.Float())
+    SunExposure = db.Column(db.Float())
+    EducationLevel = db.Column(db.String(30))
+    IncomeLevel = db.Column(db.String(30))
+    Age = db.Column(db.Integer)
+    Systolic = db.Column(db.Float())
+    Diastolic = db.Column(db.Float())
+
+
 @app.route('/')
 def home():
     return render_template("zero.html")
@@ -29,7 +61,7 @@ def register():
 
         existing_user = User.query.filter_by(userEmail=email).first()
         if existing_user:
-            return "Ecrror: Email already registered. Please use a different email."
+            return "Error: Email already registered. Please use a different email."
 
         new_user = User(
             userName=name,
@@ -78,10 +110,17 @@ def input_data():
 @app.route('/test', methods=['GET', 'POST'])
 def test():
     if request.method == 'POST':
-        return render_template('test.html')
-    return render_template('test.html')
+        return render_template('result.html')
+    return render_template('result.html')
+
+@app.route('/result', methods=['GET', 'POST'])
+def result():
+    if request.method == 'POST':
+        return render_template('result.html')
+    return render_template('result.html')
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
+

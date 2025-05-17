@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7ff 0%, #ffffff 100%);
+}
+
+.header {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    background: #2566C1;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.header h2 {
+    font-size: 1rem;
+    margin: 0.5rem 0 0;
+    opacity: 0.9;
+}
+
+.result-container {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    padding: 2.5rem;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(37, 102, 193, 0.08);
+}
+
+.age-prediction {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.prediction-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #2566C1, #87B9FF);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    color: white;
+    box-shadow: 0 10px 30px rgba(37, 102, 193, 0.2);
+}
+
+.predicted-age {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.years {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.accuracy {
+    text-align: center;
+}
+
+.accuracy-bar {
+    height: 8px;
+    background: #e1e8f5;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    overflow: hidden;
+}
+
+.accuracy-fill {
+    height: 100%;
+    background: #2566C1;
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+.accuracy-text {
+    color: #2566C1;
+    font-weight: 600;
+}
+
+.health-factors {
+    margin-top: 3rem;
+}
+
+.health-factors h3 {
+    color: #1a4c98;
+    margin-bottom: 1.5rem;
+}
+
+.factors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.factor-card {
+    padding: 1.5rem;
+    background: #f8fafd;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.factor-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.factor-value {
+    color: #1a4c98;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.actions {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-retake, .btn-download {
+    flex: 1;
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-retake {
+    background: transparent;
+    border: 2px solid #2566C1;
+    color: #2566C1;
+}
+
+.btn-download {
+    background: linear-gradient(45deg, #2566C1, #87B9FF);
+    color: white;
+}
+
+.btn-retake:hover, .btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 102, 193, 0.15);
+}
+
+@media (max-width: 768px) {
+    .result-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .factors-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+}

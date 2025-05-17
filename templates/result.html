@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/Result.css" />
+    <title>Age Prediction Result</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Your Biological Age Prediction</h1>
+      <h2>Based on your health measurements and lifestyle factors</h2>
+    </div>
+
+    <div class="result-container">
+      <div class="age-prediction">
+        <div class="prediction-circle">
+          <span class="predicted-age">{{ predicted_age }}</span>
+          <span class="years">years</span>
+        </div>
+        <div class="accuracy">
+          <div class="accuracy-bar">
+            <div class="accuracy-fill"></div>
+          </div>
+          <span class="accuracy-text">{{ accuracy }}% Accuracy</span>
+        </div>
+      </div>
+
+      <div class="health-factors">
+        <h3>Key Health Factors</h3>
+        <div class="factors-grid">
+          <div class="factor-card">
+            <span class="factor-label">BMI</span>
+            <span class="factor-value">{{ bmi }}</span>
+          </div>
+          <div class="factor-card">
+            <span class="factor-label">Cholesterol</span>
+            <span class="factor-value">{{ cholesterol }}</span>
+          </div>
+          <div class="factor-card">
+            <span class="factor-label">Blood Pressure</span>
+            <span class="factor-value">{{ blood_pressure }}</span>
+          </div>
+          <div class="factor-card">
+            <span class="factor-label">Activity Level</span>
+            <span class="factor-value">{{ activity_level }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button
+          class="btn-retake"
+      >
+          Retake Test
+        </button>
+        <button class="btn-download">Download Report</button>
+      </div>
+    </div>
+  </body>
+</html>
