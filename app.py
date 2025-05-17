@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy 
+import secrets 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.secret_key = secrets.token_hex(32)  # Secure random key
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -27,7 +29,7 @@ def register():
 
         existing_user = User.query.filter_by(userEmail=email).first()
         if existing_user:
-            return "Error: Email already registered. Please use a different email."
+            return "Ecrror: Email already registered. Please use a different email."
 
         new_user = User(
             userName=name,
@@ -47,8 +49,16 @@ def login():
         password = request.form['password']
         user = User.query.filter_by(userEmail=email, UserPassword=password).first()
         if user:
+            session['user_id'] = user.userID  # Store user ID in session
+            session['user_name'] = user.userName  # Store user name in session
             return redirect(url_for('home'))
     return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    session.pop('user_name', None)
+    return redirect(url_for('home'))
 
 @app.route('/bio-input', methods=['GET', 'POST'])
 def bio_input():
