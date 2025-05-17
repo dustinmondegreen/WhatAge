@@ -104,6 +104,31 @@ def bio_input():
 def input_data():
     if request.method == 'POST':
         # Simpan data measurements jika diperlukan
+        cholesterol = request.form.get('cholesterol')
+        bmi = request.form.get('bmi')
+        glucose = request.form.get('glucose')
+        bone_density = request.form.get('bone_density')
+        vision = request.form.get('vision')
+        hearing = request.form.get('hearing')
+        cognitive = request.form.get('cognitive')
+        stress = request.form.get('stress')
+        pollution = request.form.get('pollution')
+        sun = request.form.get('sun')
+
+        new_features = Features(
+            cholestorLevel=float(cholesterol),
+            BMI=float(bmi),
+            BloodGlucoseLevel=float(glucose),
+            BoneDensity=float(bone_density),
+            VisionSharpness=float(vision),
+            HearingAbility=float(hearing),
+            CognitiveFunction=float(cognitive),
+            StressLevel=float(stress),
+            PollutionExposure=float(pollution),
+            SunExposure=float(sun)
+        )
+        db.session.add(new_features)
+        db.session.commit()
         return redirect(url_for('test'))
     return render_template("input_data.html")
 
