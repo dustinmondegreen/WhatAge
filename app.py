@@ -116,7 +116,7 @@ def input_data():
         sun = request.form.get('sun')
 
         new_features = Features(
-            cholesterolLevel=float(cholesterol),
+            cholestorLevel=float(cholesterol),
             BMI=float(bmi),
             BloodGlucoseLevel=float(glucose),
             BoneDensity=float(bone_density),
@@ -129,6 +129,7 @@ def input_data():
         )
         db.session.add(new_features)
         db.session.commit()
+
         return redirect(url_for('test'))
     return render_template("input_data.html")
 
