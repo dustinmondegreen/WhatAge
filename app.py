@@ -18,11 +18,11 @@ class User(db.Model):
 
 class Features(db.Model):
     featureID = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    userID = db.Column(db.Integer, db.ForeignKey('user.userID'), foreign_key=True)
+    userID = db.Column(db.Integer, db.ForeignKey('user.userID'))
     gender = db.Column(db.String(30))
     height = db.Column(db.Float())
     weight = db.Column(db.Float())
-    cholestorLevel = db.Column(db.Float())
+    cholesterolLevel = db.Column(db.Float())
     BMI = db.Column(db.Float())
     BloodGlucoseLevel = db.Column(db.Float())
     BoneDensity = db.Column(db.Float())
@@ -30,7 +30,7 @@ class Features(db.Model):
     HearingAbility = db.Column(db.Float())
     physicalActivity = db.Column(db.String(30))
     smokingStatus = db.Column(db.String(30))
-    alchoholConsumption = db.Column(db.String(30))
+    alcoholConsumption = db.Column(db.String(30))
     Diet = db.Column(db.String(30))
     ChronicDiseases = db.Column(db.String(30))
     MedicationUse = db.Column(db.String(30))
@@ -38,7 +38,7 @@ class Features(db.Model):
     CognitiveFunction = db.Column(db.Float())
     MentalHealth = db.Column(db.String(30))
     SleepPattern = db.Column(db.String(30))
-    StressLevel = db.Column(db.Float(30))
+    StressLevel = db.Column(db.Float())
     PollutionExposure = db.Column(db.Float())
     SunExposure = db.Column(db.Float())
     EducationLevel = db.Column(db.String(30))
@@ -84,6 +84,8 @@ def login():
             session['user_id'] = user.userID  # Store user ID in session
             session['user_name'] = user.userName  # Store user name in session
             return redirect(url_for('home'))
+        else:
+            return "Invalid credentials. Please try again."
     return render_template('login.html')
 
 @app.route('/logout')
@@ -94,16 +96,36 @@ def logout():
 
 @app.route('/bio-input', methods=['GET', 'POST'])
 def bio_input():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    
     if request.method == 'POST':
-        # Simpan data bio jika diperlukan
-        # contoh: session['bio_data'] = request.form
+        user_id = session.get('user_id')
+        
+        new_feature = Features(
+            userID=user_id,
+            gender=request.form.get('gender'),
+            Age=request.form.get('age'),
+            height=request.form.get('height'),
+            weight=request.form.get('weight'),
+        )
+        
+        db.session.add(new_feature)
+        db.session.commit()
+        
+        session['feature_id'] = new_feature.featureID
         return redirect(url_for('input_data'))
+    
     return render_template("bio_input.html")
+
 
 @app.route('/input-data', methods=['GET', 'POST'])
 def input_data():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    
     if request.method == 'POST':
-        # Simpan data measurements jika diperlukan
+        # Get all health data from form
         cholesterol = request.form.get('cholesterol')
         bmi = request.form.get('bmi')
         glucose = request.form.get('glucose')
@@ -114,39 +136,41 @@ def input_data():
         stress = request.form.get('stress')
         pollution = request.form.get('pollution')
         sun = request.form.get('sun')
-
-        new_features = Features(
-            cholestorLevel=float(cholesterol),
-            BMI=float(bmi),
-            BloodGlucoseLevel=float(glucose),
-            BoneDensity=float(bone_density),
-            VisionSharpness=float(vision),
-            HearingAbility=float(hearing),
-            CognitiveFunction=float(cognitive),
-            StressLevel=float(stress),
-            PollutionExposure=float(pollution),
-            SunExposure=float(sun)
-        )
-        db.session.add(new_features)
-        db.session.commit()
-
-        return redirect(url_for('test'))
+        
+        # Update the existing Features record for this user
+        features = Features.query.filter_by(userID=session['user_id']).first()
+        if features:
+            features.cholesterolLevel = float(cholesterol) if cholesterol else None
+            features.BMI = float(bmi) if bmi else None
+            features.BloodGlucoseLevel = float(glucose) if glucose else None
+            features.BoneDensity = float(bone_density) if bone_density else None
+            features.VisionSharpness = float(vision) if vision else None
+            features.HearingAbility = float(hearing) if hearing else None
+            features.CognitiveFunction = float(cognitive) if cognitive else None
+            features.StressLevel = float(stress) if stress else None
+            features.PollutionExposure = float(pollution) if pollution else None
+            features.SunExposure = float(sun) if sun else None
+            
+            db.session.commit()
+        
+        return redirect(url_for('result'))
     return render_template("input_data.html")
 
-@app.route('/test', methods=['GET', 'POST'])
-def test():
-    if request.method == 'POST':
-        return render_template('result.html')
-    return render_template('result.html')
-
-@app.route('/result', methods=['GET', 'POST'])
+@app.route('/result')
 def result():
-    if request.method == 'POST':
-        return render_template('result.html')
-    return render_template('result.html')
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    
+    # Get user's features data
+    features = Features.query.filter_by(userID=session['user_id']).first()
+    if not features:
+        return redirect(url_for('bio_input'))
+    
+    # Here you would calculate the biological age based on the features
+    # For now, we'll just pass the features to the template
+    return render_template('result.html', features=features)
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-
