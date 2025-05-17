@@ -1,20 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-    <h1>Login</h1>
-    <form method="POST">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email"><br>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/zero.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <title>Login - WhatAge</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <h2><i class="fas fa-heartbeat"></i> WhatAge</h2>
+        </div>
+        <div class="nav-links">
+          <a href="{{ url_for('login') }}" class="login-btn">
+            <i class="fas fa-user"></i> Login
+          </a>
+          <a href="{{ url_for('bio_input') }}" class="test-btn">
+            <i class="fas fa-clock"></i> Take The Test
+          </a>
+        </div>
+      </nav>
+    </header>
+    
+    <main class="main-content">
+      <div class="login-container">
+        <h1>Login</h1>
+        <form method="POST" class="login-form">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          
+          <button type="submit" class="login-button">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+          
+          <p class="register-link">
+            Don't have an account? <a href="{{ url_for('register') }}">Register here</a>
+          </p>
+        </form>
+      </div>
+    </main>
+    
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h2><i class="fas fa-heartbeat"></i> WhatAge</h2>
+        </div>
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#documentation">Documentation</a></li>
+            <li><a href="#guides">Guides</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <ul>
+            <li><a href="#career">Career</a></li>
+            <li><a href="#team">Our Team</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><a href="#whatsapp">WhatsApp</a></li>
+            <li><a href="#email">Email</a></li>
+            <li><a href="#line">LINE</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="footer-legal">
+          <p>All Rights Reserved ©2024 WhatAge</p>
+          <div class="legal-links">
+            <a href="#privacy">Privacy Policy</a>
+            <span>&</span>
+            <a href="#terms">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <style>
+        .login-container {
+          max-width: 500px;
+          margin: 2rem auto;
+          padding: 2rem;
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+        
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        
+        .form-group label {
+          font-weight: 500;
+          color: #333;
+        }
+        
+        .form-group input {
+          padding: 0.8rem;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          font-size: 1rem;
+        }
+        
+        .login-button {
+          background: linear-gradient(45deg, #2566c1, #87b9ff);
+          color: white;
+          padding: 1rem;
+          border: none;
+          border-radius: 8px;
+          font-size: 1rem;
+          font-weight: 500;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          transition: all 0.3s ease;
+        }
+        
+        .login-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(37, 102, 193, 0.2);
+        }
+        
+        .register-link {
+          text-align: center;
+          margin-top: 1rem;
+          color: #666;
+        }
+        
+        .register-link a {
+          color: #2566c1;
+          text-decoration: none;
+          font-weight: 500;
+        }
+        
+        .register-link a:hover {
+          text-decoration: underline;
+        }
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br>
-
-        <button type="submit">Login</button>
-    </form>
-    <p><a href="{{ url_for('register') }}">Register for New User</a></p>
-</body>
+        h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+      </style>
+  </body>
 </html>
