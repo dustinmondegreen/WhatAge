@@ -43,7 +43,8 @@ class Features(db.Model):
     SunExposure = db.Column(db.Float())
     EducationLevel = db.Column(db.String(30))
     IncomeLevel = db.Column(db.String(30))
-    bloodPressure = db.Column(db.String(30))
+    Systolic = db.Column(db.Float())
+    Diastolic = db.Column(db.Float())
 
 
 @app.route('/')
@@ -133,6 +134,8 @@ def input_data():
         stress = request.form.get('stress')
         pollution = request.form.get('pollution')
         sun = request.form.get('sun')
+        systolic = request.form.get('systolic')
+        diastolic = request.form.get('diastolic')
         
         # Update the existing Features record for this user
         features = Features.query.filter_by(userID=session['user_id']).first()
@@ -147,6 +150,8 @@ def input_data():
             features.StressLevel = float(stress) if stress else None
             features.PollutionExposure = float(pollution) if pollution else None
             features.SunExposure = float(sun) if sun else None
+            features.Systolic = float(systolic) if systolic else None
+            features.Diastolic = float(diastolic) if diastolic else None
             
             db.session.commit()
         
@@ -159,7 +164,6 @@ def test():
         return redirect(url_for('login'))
     
     if request.method == 'POST':
-        bloodpressure = request.form.get('bloodpressure')
         activity = request.form.get('activity')
         smoking = request.form.get('smoking')
         alcohol = request.form.get('alcohol')
@@ -174,7 +178,6 @@ def test():
 
         features = Features.query.filter_by(userID=session['user_id']).first()
         if features:
-            features.bloodPressure = str(bloodpressure) if bloodpressure else None  # Ubah ke string
             features.physicalActivity = str(activity) if activity else None
             features.smokingStatus = str(smoking) if smoking else None
             features.alcoholConsumption = str(alcohol) if alcohol else None
