@@ -43,9 +43,7 @@ class Features(db.Model):
     SunExposure = db.Column(db.Float())
     EducationLevel = db.Column(db.String(30))
     IncomeLevel = db.Column(db.String(30))
-    Age = db.Column(db.Integer)
-    Systolic = db.Column(db.Float())
-    Diastolic = db.Column(db.Float())
+    bloodPressure = db.Column(db.String(30))
 
 
 @app.route('/')
@@ -105,7 +103,6 @@ def bio_input():
         new_feature = Features(
             userID=user_id,
             gender=request.form.get('gender'),
-            Age=request.form.get('age'),
             height=request.form.get('height'),
             weight=request.form.get('weight'),
         )
@@ -153,8 +150,47 @@ def input_data():
             
             db.session.commit()
         
-        return redirect(url_for('result'))
+        return redirect(url_for('test'))
     return render_template("input_data.html")
+
+@app.route('/test', methods=['GET', 'POST'])
+def test():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    
+    if request.method == 'POST':
+        bloodpressure = request.form.get('bloodpressure')
+        activity = request.form.get('activity')
+        smoking = request.form.get('smoking')
+        alcohol = request.form.get('alcohol')
+        diet = request.form.get('diet')
+        chronic = request.form.get('chronic')
+        medication = request.form.get('medication')
+        family = request.form.get('family')
+        mental = request.form.get('mental') 
+        sleep = request.form.get('sleep')
+        education = request.form.get('education')
+        income = request.form.get('income')
+
+        features = Features.query.filter_by(userID=session['user_id']).first()
+        if features:
+            features.bloodPressure = str(bloodpressure) if bloodpressure else None  # Ubah ke string
+            features.physicalActivity = str(activity) if activity else None
+            features.smokingStatus = str(smoking) if smoking else None
+            features.alcoholConsumption = str(alcohol) if alcohol else None
+            features.Diet = str(diet) if diet else None
+            features.ChronicDiseases = str(chronic) if chronic else None
+            features.MedicationUse = str(medication) if medication else None
+            features.FamilyHistory = str(family) if family else None
+            features.MentalHealth = str(mental) if mental else None
+            features.SleepPattern = str(sleep) if sleep else None
+            features.EducationLevel = str(education) if education else None
+            features.IncomeLevel = str(income) if income else None
+
+            db.session.commit()    
+        
+        return redirect(url_for('result'))
+    return render_template("test.html")
 
 @app.route('/result')
 def result():
